@@ -19,13 +19,14 @@ class authController {
 
     async auth(req, res) {
         try{
-            const {email, passwords} = req.body
+            const {login, passwords} = req.body
 
-            const pass = await db.query("SELECT passwords FROM users WHERE email = $1", [email])
+            const pass = await db.query("SELECT passwords FROM users WHERE login = $1", [login])
+
             const DEJWT = jwt.decode(pass.rows[0].passwords)
 
             if(passwords == DEJWT.password) {
-                const users = await db.query("SELECT * FROM users WHERE email = $1 AND passwords = $2", [email, pass.rows[0].passwords])
+                const users = await db.query("SELECT * FROM users WHERE login = $1 AND passwords = $2", [login, pass.rows[0].passwords])
 
                 if(users.rows) {
                     // res.json(pass.rows[0].passwords)
@@ -43,15 +44,11 @@ class authController {
     }
 
     async profile(req, res){
-        const token = req.headers.token
+        try {
+            const token = req.headers.token
 
-        const users = await db.query("SELECT * FROM users WHERE passwords = $1", [token])
-        res.json(users.rows)
-    }
-
-    async logout(req, res) {
-        try{
-
+            const users = await db.query("SELECT * FROM users WHERE passwords = $1", [token])
+            res.json(users.rows)
         } catch (e) {
             console.log(e)
         }

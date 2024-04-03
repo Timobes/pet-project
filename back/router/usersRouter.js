@@ -7,4 +7,6 @@ userRouter.get('/', userController.getUsers)
 
 userRouter.get('/:id', userController.getUser)
 
+userRouter.delete('/:id', userController.deleteUser)
+
 module.exports = userRouter

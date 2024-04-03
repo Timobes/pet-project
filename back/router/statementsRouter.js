@@ -9,4 +9,8 @@ statementRouter.get('/:id', statementController.getOneState)
 
 statementRouter.post('/', statementController.createState)
 
+statementRouter.put('/:id', statementController.changeStatusState)
+
+statementRouter.delete('/:id', statementController.deleteState)
+
 module.exports = statementRouter

@@ -1,16 +1,24 @@
 const Router = require('express')
 const statementRouter = new Router()
 
+const tokenMeddleware = require('../meddleware/tokenMeddleware')
+const adminMeddleware = require('../meddleware/isAdminMeddleware')
+
 const statementController = require('../controller/statementsController')
 
-statementRouter.get('/', statementController.getAllState)
+// Все статьи
+statementRouter.get('/', tokenMeddleware, statementController.getAllState)
 
-statementRouter.get('/:id', statementController.getOneState)
+// Статьи по id
+statementRouter.get('/:id', tokenMeddleware, statementController.getOneState)
 
-statementRouter.post('/', statementController.createState)
+// Сделать пост
+statementRouter.post('/', tokenMeddleware,  statementController.createState)
 
-statementRouter.put('/:id', statementController.changeStatusState)
+// Обновить статус поста по id
+statementRouter.put('/:id', tokenMeddleware, adminMeddleware,  statementController.changeStatusState)
 
-statementRouter.delete('/:id', statementController.deleteState)
+// Удалить пост по id
+statementRouter.delete('/:id', tokenMeddleware, adminMeddleware,  statementController.deleteState)
 
 module.exports = statementRouter

@@ -30,7 +30,7 @@ class authController {
 
                 if(users.rows) {
                     // res.json(pass.rows[0].passwords)
-                    res.json(users.rows)
+                    res.json({message: "Добро пожаловать!", users: users.rows})
                 } else {
                     res.json('Пользователя нет')
                 }

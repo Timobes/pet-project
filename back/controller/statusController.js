@@ -21,6 +21,17 @@ class StatusRouter {
             console.log(e)
         }
     }
+
+    async createNewStatus (req, res) {
+        try {
+            const {status_name} = req.body
+            const status = await db.query('INSERT INTO status_table (status_name) VALUES ($1) RETURNING *', [status_name])
+
+            res.json(status.rows)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 }
 
 module.exports = new StatusRouter

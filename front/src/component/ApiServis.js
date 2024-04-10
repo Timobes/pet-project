@@ -6,30 +6,6 @@ const axiosInstance = axios.create({
         "Content-Type": "application/json",
     }
 })
-export const allAnime = async () => {
-    try {
-        const response = await axiosInstance.get(`/api/anime`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-export const getOneAnime = async (id) => {
-    try {
-        const response = await axiosInstance.get(`/api/anime/${id}`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-export const getEp = async (id) => {
-    try{
-        const response = await axiosInstance.get(`/api/anime/ep/${id}`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
 export const reg = async (data) => {
     try {
         const response = await axiosInstance.post(`/api/auth/reg`, data)
@@ -46,89 +22,101 @@ export const auth = async (data) => {
         console.log(e)
     }
 }
-export const createAnime = async (data, config) => {
+export const createState = async (data, config) => {
     try {
-        const response = await axiosInstance.post(`/api/anime`, data, config)
+        const response = await axiosInstance.post(`/api/state/`, data, config)
         return response.data
     } catch (e) {
         console.log(e)
     }
 }
-export const getGenre = async (id) => {
+export const getState = async (params) => {
     try {
-        const response = await axiosInstance.get(`/api/genre/anime/${id}`)
+        const response = await axiosInstance.get(`/api/state`, params)
         return response.data
     } catch (e) {
         console.log(e)
     }
 }
-export const createGenre = async (data) => {
+export const getOneState = async (id, params) => {
     try {
-        const response = await axiosInstance.post(`/api/genre/add`, data)
+        const response = await axiosInstance.get(`/api/state/${id}`, params)
         return response.data
     } catch (e) {
         console.log(e)
     }
 }
-export const createEp = async (formData, config) => {
+export const delState = async (id, params) => {
     try {
-        const response = await axiosInstance.post(`/api/anime/series`, formData, config)
+        const response = await axiosInstance.delete(`/api/state/${id}`, params)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
+// export const updateState = async (id, params) => {
+//     try {
+//         const response = await axiosInstance.put(`/api/state/${id}`, params)
+//         return response.data
+//     } catch (e) {
+//         console.log(e)
+//     }
+// }
+export const getUsers = async (params) => {
+    try {
+        const response = await axiosInstance.get(`/api/users/`, params)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
+export const getOneUser = async (id, params) => {
+    try {
+        const response = await axiosInstance.get(`/api/users/${id}`, params)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
+export const delOneUser = async (id, params) => {
+    try {
+        const response = await axiosInstance.delete(`/api/users/${id}`, params)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
+// export const updateUser = async (id, params) => {
+//     try {
+//         const response = await axiosInstance.put(`/api/users/${id}`, params)
+//         return response.data
+//     } catch (e) {
+//         console.log(e)
+//     }
+// }
+export const getStatuses = async (params) => {
+    try {
+        const response = await axiosInstance.get(`/api/status/`, params)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
+export const getStatus = async (id, params) => {
+    try {
+        const response = await axiosInstance.get(`/api/status/${id}`, params)
+        return response.data
+    } catch (e) {
+        console.log(e)
+    }
+}
+export const updateStateStatus = async (id, data, params) => {
+    try {
+        const response = await axiosInstance.put(`/api/status/${id}`, data, params)
         return response.data
     } catch (e) {
         console.log(e)
     }
 }
 
-export const getFilterTags = async (name) => {
-    try {
-        const response = await axiosInstance.get(`/api/filter/tags/${name}`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
 
-export const getAllTags = async () => {
-    try {
-        const response = await axiosInstance.get(`/api/genre`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-export const getReview = async (id) => {
-    try {
-        const response = await axiosInstance.get(`/api/review/${id}`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-export const createReview = async (data, id) => {
-    try {
-        const response = await axiosInstance.post(`/api/review/${id}`, data)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-export const delReview = async (id) => {
-    try {
-        const response = await axiosInstance.delete(`/api/review/${id}`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-export const getUser = async (id) => {
-    try {
-        const response = await axiosInstance.get(`/api/users/${id}`)
-        return response.data
-    } catch (e) {
-        console.log(e)
-    }
-}

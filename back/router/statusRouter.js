@@ -7,4 +7,6 @@ statusRouter.get('/', statusController.getAllStatus)
 
 statusRouter.get('/:id', statusController.getOneStatus)
 
+statusRouter.post('/', statusController.createNewStatus)
+
 module.exports = statusRouter

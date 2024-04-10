@@ -3,10 +3,12 @@ import {Header} from "./component/header/Header";
 import {Main} from "./component/main/Main";
 
 import {Profile} from "./component/header/Profile/Profile";
-import {Reg} from "./component/header/auth/Reg/Reg";
-import {Login} from "./component/header/auth/Login/Login";
+import {Reg} from "./component/header/auth/Reg";
+import {Login} from "./component/header/auth/Login";
 import {Admin} from "./component/ADpanel/Admin";
 import {User} from "./component/main/users/User";
+import {StatementsCreate} from "./component/main/statements/StatementsCreate";
+
 export function Routing() {
     return (
         <BrowserRouter>
@@ -18,15 +20,15 @@ export function Routing() {
 
                 <Route path="/user/:id" element={<User />} />
 
+                <Route path="/state" element={<StatementsCreate />} />
 
                 <Route path="/reg" element={<Reg />} />
                 <Route path="/login" element={<Login />} />
 
                 <Route path="/admin" element={<Admin />} />
 
-                <Route path="*" element={<h1>Error!</h1>} />
+                <Route path="*" element={<h1>Ошибка в адресе!</h1>} />
             </Routes>
-            {/*<Footer />*/}
         </BrowserRouter>
     )
 }

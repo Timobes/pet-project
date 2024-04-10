@@ -1,11 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {clearToken} from "../../../state/slice/authSlice";
-import './style.css'
 
 export function Profile() {
     const token = useSelector((state) => state.auth.value)
     const dispatch = useDispatch()
     // dispatch(clearToken())
+
+    console.log(token)
+
     const exit = () => {
         let vop = window.confirm("Вы хотите выйти?");
 
@@ -21,12 +23,17 @@ export function Profile() {
             {
                 token
                     ?
-                        <div className="b-profile">
-                            <div className="profile-name">{token[0].username}</div>
-                            <button onClick={exit} className="exit-btn">Выйти</button>
-                        </div>
+                    <div>
+                        <div>Имя: {token.name}</div>
+                        <div>Фамилия: {token.last_name}</div>
+                        <div>Отчество: {token.middle_name}</div>
+                        <div>Почта: {token.email}</div>
+                        <div>Номер телефона: {token.phone}</div>
+
+                        <button onClick={exit} className="exit-btn">Выйти</button>
+                    </div>
                     :
-                        <h1>Вы не вошли в аккаунт!</h1>
+                    <h1>Вы не вошли в аккаунт!</h1>
             }
         </div>
     )

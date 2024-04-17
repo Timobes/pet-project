@@ -17,7 +17,7 @@ export function Header() {
 
             <Link to="/profile">
                 <div className="profile">
-                    Профиль
+
                     {
                         token
                             ?
@@ -26,14 +26,15 @@ export function Header() {
                                     {
                                         token.is_admin === true
                                             ?
-                                            <Link to="/admin">Админка</Link>
+                                                <Link to="/admin">Админка</Link>
                                             :
-                                            <h1></h1>
+                                                <h1></h1>
                                     }
+                                    <br/>
                                     <Link to="/state">Создать заявление</Link>
                                 </div>
                             :
-                                <h1></h1>
+                                <h1>Профиль</h1>
                     }
                 </div>
             </Link>

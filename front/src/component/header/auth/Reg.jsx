@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {reg} from "../../ApiServis";
+import {Link} from "react-router-dom";
 
 export function Reg() {
 
@@ -28,7 +29,7 @@ export function Reg() {
     }
 
     return (
-        <div>
+        <div className='auth'>
             <form>
                 <input type="text" className="" placeholder="Имя" name="name" required/>
                 <input type="text" className="" placeholder="Фамилия" name="name" required/>
@@ -38,8 +39,9 @@ export function Reg() {
                 <input type="tel" className="" placeholder="Номер телефона" name="name" required/>
                 <input type="email" className="" placeholder="Почта" name="name" required/>
                 <input type="submit" value="Отправить" onClick={submit}/>
+                Есть аккаунт? <Link to="/login">Войти</Link>
+                <div>{data}</div>
             </form>
-            <div>{data}</div>
         </div>
     )
 }

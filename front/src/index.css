@@ -92,3 +92,13 @@ a {
     }
   }
 }
+
+.user-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  color: #000;
+  border: 1px solid;
+}

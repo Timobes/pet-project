@@ -34,7 +34,8 @@ export function Header() {
                                     <Link to="/state">Создать заявление</Link>
                                 </div>
                             :
-                                <h1>Профиль</h1>
+                                // <h1>Профиль</h1>
+                                <Link to="/reg">Регистрация</Link>
                     }
                 </div>
             </Link>

@@ -21,6 +21,7 @@ export function Reg() {
             .then(response => {
                 console.log(response)
                 setData(response.message)
+                
             })
 
             .catch(err => {
